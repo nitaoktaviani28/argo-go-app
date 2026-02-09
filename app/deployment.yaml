@@ -15,7 +15,7 @@ spec:
         app: go-app
     spec:
       containers:
-      - image: docker.io/haechanlovelove/go-app:1.1
+      - image: docker.io/haechanlovelove/go-app:1.2
         name: go-app-pod
         ports:
         - containerPort: 8686
