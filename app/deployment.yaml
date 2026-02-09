@@ -1,8 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: go-app
   name: go-app-deploy
 spec:
   replicas: 3
@@ -14,8 +12,10 @@ spec:
       labels:
         app: go-app
     spec:
+      imagePullSecrets:
+        - name: dockerhub-secret
       containers:
-      - image: docker.io/haechanlovelove/go-app:1.3
-        name: go-app-pod
+      - name: go-app-pod
+        image: docker.io/haechanlovelove/go-app:1.3
         ports:
         - containerPort: 8686
