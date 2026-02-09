@@ -1,17 +1,11 @@
-# ===== Build stage =====
-FROM golang:1.22-alpine AS builder
+FROM nginx:alpine
 
-WORKDIR /app
-RUN apk add --no-cache git
+# hapus default config
+RUN rm -rf /usr/share/nginx/html/*
 
-RUN git clone https://gitlab.adinusa.id/bta-adinusa/notes-wiki.git .
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o web main.go
+# copy static html
+COPY index.html /usr/share/nginx/html/index.html
 
-# ===== Runtime stage =====
-FROM alpine:3.19
+EXPOSE 80
 
-WORKDIR /app
-COPY --from=builder /app/web .
-
-EXPOSE 8686
-CMD ["./web"]
+CMD ["nginx", "-g", "daemon off;"]
