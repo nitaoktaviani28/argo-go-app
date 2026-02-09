@@ -14,13 +14,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:alpine
+        image: docker.io/haechanlovelove/simple-nginx:1.0
         ports:
         - containerPort: 80
-        volumeMounts:
-        - name: html
-          mountPath: /usr/share/nginx/html
-      volumes:
-      - name: html
-        configMap:
-          name: html-config
