@@ -23,4 +23,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: haechanlovelove/go-app:1.1
+        tags: haechanlovelove/go-app:1.2
